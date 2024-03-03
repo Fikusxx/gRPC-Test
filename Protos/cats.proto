@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPC_Test.GRPC.CatFeature";
+
+import "google/api/annotations.proto";
+
+package cats;
+
+
+service CatsGrpcService
+{
+	rpc CreateCat(CreateCatRequest) returns (CreateCatResponse){
+		option (google.api.http) = {
+			post: "/v1/cats",
+			body: "*"
+		};
+	}
+
+	rpc GetCat(GetCatRequest) returns (GetCatResponse){
+		option (google.api.http) = {
+			get: "/v1/cats/{id}"
+		};
+	}
+	
+	rpc GetAllCats(GetAllCatsRequest) returns (GetAllCatsResponse){
+		option (google.api.http) = {
+			get: "/v1/cats"
+		};
+	}
+
+	rpc GetSoket(Empty) returns (GetAllCatsResponse);
+}
+
+
+message CreateCatRequest{
+	string name = 1;
+	int32 age = 2;
+}
+
+message CreateCatResponse{
+	string response = 1;
+}
+
+message GetCatRequest{
+	string name = 1;
+	int32 id = 2;
+}
+
+message GetCatResponse{
+	string name = 1;
+	int32 age = 2;
+}
+
+message GetAllCatsRequest{
+	Pagination page = 1;
+}
+
+message Pagination{
+	int32 size = 1;
+	int32 number = 2;
+}
+
+message GetAllCatsResponse{
+	repeated GetCatResponse response = 1;
+}
+
+enum Color{
+	BLUE = 0;
+	GREEN = 1;
+}
+
+message Empty{
+
+}
