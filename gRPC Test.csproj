@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.61.0" />
+    <PackageReference Include="Grpc.AspNetCore.HealthChecks" Version="2.61.0" />
     <PackageReference Include="Microsoft.AspNetCore.Grpc.JsonTranscoding" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Grpc.Swagger" Version="0.8.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
